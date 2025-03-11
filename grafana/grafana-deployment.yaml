@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - name: grafana
+        image: grafana/grafana:8.5.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: GF_SECURITY_ADMIN_USER
+          value: "grupo-9"
+        - name: GF_SECURITY_ADMIN_PASSWORD
+          value: "pin_final"
+        volumeMounts:
+        - name: grafana-config
+          mountPath: /etc/grafana/provisioning/datasources
+          readOnly: true
+      volumes:
+      - name: grafana-config
+        configMap:
+          name: grafana-datasource
