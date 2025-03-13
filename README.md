@@ -7,7 +7,7 @@ Miembos:
 
 -Emiliano Ginepro
 
-emiliano.gineprogmail.com
+emiliano.ginepro@gmail.com
 
 
 -Fernando Bustamante
